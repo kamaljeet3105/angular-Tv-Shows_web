@@ -25,10 +25,11 @@ export class SearchComponent {
   submitForm()
   {
       console.log(this.searchForm.value,'searchform#');
+      debugger
       this.service.getSearchShow(this.searchForm.value).subscribe((result)=>{
     console.log(result,'searchShow##');
          
-          this.searchResult = result.results;
+          this.searchResult = result;
       });
   }
 

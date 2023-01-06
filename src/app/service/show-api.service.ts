@@ -20,15 +20,13 @@ export class ShowApiService {
 
   // searchshow
   getSearchShow(data: any): Observable<any> {
-    debugger
-    console.log(data, 'show');
-
-    return this.http.get(`https://api.tvmaze.com/lookup/shows?thetvdb=${data.movieName}`);
+ 
+    return this.http.get(`https://api.tvmaze.com/search/shows?q=${data.movieName}`);
   }
 
   // showsdatails
   getDetails(data: any): Observable<any> {
-    return this.http.get(`https://api.tvmaze.com/singlesearch/shows?q=${data.movieName}`);
+    return this.http.get(` https://api.tvmaze.com/episodes/id=${data.details}`);
   }
 
   // getMovieVideo

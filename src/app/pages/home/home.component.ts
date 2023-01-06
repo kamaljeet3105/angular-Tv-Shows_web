@@ -4,6 +4,7 @@ import {FormControl,FormGroup} from '@angular/forms';
 import { Title,Meta } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,109 +18,80 @@ export class HomeComponent implements OnInit {
 
 public getJsonValue: any;
 public postJsonValue: any;
-  constructor(private service: ShowApiService,private http:HttpClient , private title:Title,private meta:Meta) {
+  constructor(private service: ShowApiService,private http:HttpClient , private title:Title,private meta:Meta, public router: Router) {
     this.title.setTitle('Search movies - showtime');
     this.meta.updateTag({name:'description',content:'search here movies like avatar,war etc'});
-    
+  
    }
 
-  bannerResult: any = [];
-  showsResult: any = [];
-  actionMovieResult: any = [];
-  adventureMovieResult: any = [];
-  animationMovieResult: any = [];
-  comedyMovieResult: any = [];
-  documentaryMovieResult: any = [];
-  sciencefictionMovieResult: any = [];
-  thrillerMovieResult: any = [];
+  bannerResult: any = []
+
+  actionMovieResult: any = []
+  adventureMovieResult: any = []
+  animationMovieResult: any = []
+  comedyMovieResult: any = []
+  documentaryMovieResult: any = []
+  sciencefictionMovieResult: any = []
+  thrillerMovieResult: any = []
+  crimeMovieResult : any =[]
+  romanceMovieResult : any =[]
+  horrorMovieResult : any =[]
+  fantacyMovieResult : any =[]
+  familyMovieResult : any =[]
 
   ngOnInit(): void {
-    this.image=this.bannerResult.image;
-    this.genres=this.bannerResult.genres;
-    this.schedule=this.bannerResult.schedule;
-
-   
-    this.bannerData();
-    this.showsData();
-    // this.actionMovie();
-    // this.adventureMovie();
-    // this.comedyMovie();
-    // this.animationMovie();
-    // this.documentaryMovie();
-    // this.sciencefictionMovie();
-    // this.thrillerMovie();
-    
+    this.bannerData();    
   }
 
 
  
 bannerData(){
   this.service.bannerApiData().subscribe((result)=>{
-console.log(result, 'bannerResult');
-this.bannerResult = result.results;
+    console.log(result)
+    this.bannerResult = result.results;
+   result.forEach((el: { genres: string | string[]; }) => {
+
+    if(el.genres.includes("Science-Fiction")){
+      this.sciencefictionMovieResult.push(el)
+    }
+    if(el.genres.includes("Action")){
+      this.actionMovieResult.push(el)
+    }
+    if(el.genres.includes("Crime")){
+      this.crimeMovieResult.push(el)
+    }
+    if(el.genres.includes("Thriller")){
+      this.thrillerMovieResult.push(el)
+    }
+    if(el.genres.includes("Romance")){
+      this.romanceMovieResult.push(el)
+    }
+    if(el.genres.includes("Horror")){
+      this.horrorMovieResult.push(el)
+    }
+    if(el.genres.includes("Adventure")){
+      this.adventureMovieResult.push(el)
+    }
+    if(el.genres.includes("Anime")){
+      this.animationMovieResult.push(el)
+    }
+    if(el.genres.includes("Comedy")){
+      this.comedyMovieResult.push(el)
+    }
+    if(el.genres.includes("Fantasy")){
+      this.fantacyMovieResult.push(el)
+    }
+    if(el.genres.includes("Family")){
+      this.familyMovieResult.push(el)
+    }
+  
+   });
   });
 }
-  showsData() {
-    this.service.showsApiData().subscribe((result) => {
-      console.log(result, 'showsresult#');
-      this.showsResult = result.results;
-      this.showsResult
-    });
-  }
+handleNextPage(val:any){
+  debugger
 
-  // action 
-  // actionMovie() {
-  //   this.service.fetchActionMovies().subscribe((result) => {
-  //     this.actionMovieResult = result.results;
-  //   });
-  // }
-
-
-
-
-  // adventure 
-  // adventureMovie() {
-  //   this.service.fetchAdventureMovies().subscribe((result) => {
-  //     this.adventureMovieResult = result.results;
-  //   });
-  // }
-
-
-  // animation 
-  // animationMovie() {
-  //   this.service.fetchAnimationMovies().subscribe((result) => {
-  //     this.animationMovieResult = result.results;
-  //   });
-  // }
-
-
-  // comedy 
-  // comedyMovie() {
-  //   this.service.fetchComedyMovies().subscribe((result) => {
-  //     this.comedyMovieResult = result.results;
-  //   });
-  // }
-
-  // documentary 
-  // documentaryMovie() {
-  //   this.service.fetchDocumentaryMovies().subscribe((result) => {
-  //     this.documentaryMovieResult = result.results;
-  //   });
-  // }
-
-
-  // science-fiction 
-  // sciencefictionMovie() {
-  //   this.service.fetchScienceFictionMovies().subscribe((result) => {
-  //     this.sciencefictionMovieResult = result.results;
-  //   });
-  // }
-
-  // thriller
-  // thrillerMovie() {
-  //   this.service.fetchThrillerMovies().subscribe((result) => {
-  //     this.thrillerMovieResult = result.results;
-  //   });
-  // }
+  this.router.navigate(['./details'],{queryParams:{data:val.toString()}})
+}
 
 }
