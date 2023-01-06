@@ -26,7 +26,7 @@ export class AppComponent {
     if(document.body.scrollTop > 0 || document.documentElement.scrollTop > 0)
     {
       this.navbar = {
-        'background-color':'#c4bfbf'
+        'background-color':'#3f3f3f'
       }
     }else
     {

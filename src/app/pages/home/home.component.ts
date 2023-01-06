@@ -88,10 +88,13 @@ bannerData(){
    });
   });
 }
-handleNextPage(val:any){
+handleNextPage(val:any): void{
   debugger
 
-  this.router.navigate(['./details'],{queryParams:{data:val.toString()}})
+    // this.router.navigate(['/details/:id'], { queryParams: { genres: '', type: '' } });  
+  // this.router.navigate(['/details'],{queryParams:val,skipLocationChange:true});
+
+  this.router.navigate(['/details'],{queryParams:{image:val.image.original,rating:val.rating.average,name:val.name,description:val.summary},skipLocationChange:true});
 }
 
 }

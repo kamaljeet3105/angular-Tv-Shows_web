@@ -10,12 +10,14 @@
         </div>
     </form>
     <div class="row mt-4">
-        <h5 class="text-black">Action </h5>
+       
         <div class="rowposter mt-3 p-2">
             <ng-container *ngFor="let a of searchResult">
-                <img src="{{ a.show.image.original 
+            
+                <img *ngIf="  a.show.image.original" (click)="handleNextPage(a)" src="{{ a.show.image.original 
                 }}
-               " class="rowimg largeposter" alt="..." [routerLink]="['/details',a.id]" />
+               " class="rowimg largeposter" alt="..."  />
+       
             </ng-container>
         </div>
     </div>

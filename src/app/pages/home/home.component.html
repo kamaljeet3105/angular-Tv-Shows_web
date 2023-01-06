@@ -1,94 +1,85 @@
 
-  
-  <div class="contain mt-3 mb-5 p-4">
-    <div class="row mt-4">
-      <h5 class="text-white">Action </h5>
-      <div class="rowposter mt-3 p-2">
-        <ng-container *ngFor="let a of actionMovieResult">
-          <img (click)='handleNextPage(a)' src="{{ a.image.original }}" class="rowimg largeposter" alt="..."
-            [routerLink]="['/details',a.id]"/>
-        </ng-container>
+  <div class="body1">
+    <div class="contain mt-3 mb-5 p-4">
+      <div class="row mt-4">
+        <h5 class="text h">Action </h5>
+        <div class="rowposter mt-3 p-2">
+          <ng-container *ngFor="let a of actionMovieResult">
+            <img (click)='handleNextPage(a)' src="{{ a.image.original }}" class="rowimg largeposter" alt="..."
+              [routerLink]="['/details',a.id]"/>
+          </ng-container>
+        </div>
       </div>
-    </div>
-  
-    <!-- adventure movies  -->
-    <div class="row mt-4">
-      <h5 class="text-white">adventure </h5>
-      <div class="rowposter mt-3 p-2">
-        <ng-container *ngFor="let aa of adventureMovieResult">
-          <img (click)='handleNextPage(aa)' src="{{ aa.image.original }}" class="rowimg largeposter" alt="..."
-            [routerLink]="['/details',aa.id]">
-        </ng-container>
-  
+    
+      <!-- adventure movies  -->
+      <div class="row mt-4">
+        <h5 class="text h">adventure </h5>
+        <div class="rowposter mt-3 p-2">
+          <ng-container *ngFor="let aa of adventureMovieResult">
+            <img (click)='handleNextPage(aa)' src="{{ aa.image.original }}" class="rowimg largeposter" alt="..."
+              [routerLink]="['/details',aa.id]">
+          </ng-container>
+    
+        </div>
+    
       </div>
-  
-    </div>
-  
-  
-    <!-- animation movies  -->
-    <div class="row mt-4">
-      <h5 class="text-white">Animation </h5>
-      <div class="rowposter mt-3 p-2">
-        <ng-container *ngFor="let an of animationMovieResult">
-          <img (click)='handleNextPage(an)' src="{{ an.image.original }}" class="rowimg largeposter" alt="..."
-            [routerLink]="['/details',an.id]">
-        </ng-container>
-  
+    
+    
+      <!-- animation movies  -->
+      <div class="row mt-4">
+        <h5 class="text h">Animation </h5>
+        <div class="rowposter mt-3 p-2">
+          <ng-container *ngFor="let an of animationMovieResult">
+            <img (click)='handleNextPage(an)' src="{{ an.image.original }}" class="rowimg largeposter" alt="..."
+              [routerLink]="['/details',an.id]">
+          </ng-container>
+    
+        </div>
+    
       </div>
-  
-    </div>
-  
-    <!-- comedy movies  -->
-    <div class="row mt-4">
-      <h5 class="text-white">Comedy </h5>
-      <div class="rowposter mt-3 p-2">
-        <ng-container *ngFor="let c of comedyMovieResult">
-          <img (click)='handleNextPage(c)' src="{{ c.image.original}}" class="rowimg largeposter" alt="..."
-            [routerLink]="['/details',c.id]">
-        </ng-container>
-  
-      </div>
-  
-    </div>
-  
-    <!-- documentary movies  -->
-    <!-- <div class="row mt-4">
-      <h5 class="text-white">Documentary </h5>
-      <div class="rowposter mt-3 p-2">
-        <ng-container *ngFor="let d of documentaryMovieResult">
-          <img (click)='handleNextPage(d)' src="{{ d.image.original }}" class="rowimg largeposter" alt="..."
-            [routerLink]="['/details',d.id]">
-        </ng-container>
-  
+    
+      <!-- comedy movies  -->
+      <div class="row mt-4">
+        <h5 class="text h">Comedy </h5>
+        <div class="rowposter mt-3 p-2">
+          <ng-container *ngFor="let c of comedyMovieResult">
+            <img (click)='handleNextPage(c)' src="{{ c.image.original}}" class="rowimg largeposter" alt="..."
+              [routerLink]="['/details',c.id]">
+          </ng-container>
+    
+        </div>
+    
       </div>
   
-    </div> -->
+    
+      <!-- science-fiction movies  -->
+      <div class="row mt-4">
+        <h5 class="text h">Science-Fiction </h5>
+        <div class="rowposter mt-3 p-2">
+          <ng-container *ngFor="let sf of sciencefictionMovieResult">
   
-    <!-- science-fiction movies  -->
-    <div class="row mt-4">
-      <h5 class="text-white">Science-Fiction </h5>
-      <div class="rowposter mt-3 p-2">
-        <ng-container *ngFor="let sf of sciencefictionMovieResult">
-
-          <img (click)='handleNextPage(sf)' src="{{ sf.image.original}}" class="rowimg largeposter" alt="..."
-            [routerLink]="['/details',sf.id]">
-        </ng-container>
-  
+            <img (click)='handleNextPage(sf)' src="{{ sf.image.original}}" class="rowimg largeposter" alt="..."
+              [routerLink]="['/details',sf.id]">
+          </ng-container>
+    
+        </div>
+    
       </div>
-  
-    </div>
-  
-    <!-- thriller movies  -->
-    <div class="row mt-4">
-      <h5 class="text-white">Thriller </h5>
-      <div class="rowposter mt-3 p-2">
-        <ng-container *ngFor="let th of thrillerMovieResult">
-          <img (click)='handleNextPage(th)' src="{{ th.image.original}}" class="rowimg largeposter" alt="..."
-            [routerLink]="['/details',th.id]">
-        </ng-container>
-  
+    
+      <!-- thriller movies  -->
+      <div class="row mt-4">
+        <h5 class="text h">Thriller </h5>
+        <div class="rowposter mt-3 p-2">
+          <ng-container *ngFor="let th of thrillerMovieResult">
+            <img (click)='handleNextPage(th)' src="{{ th.image.original}}" class="rowimg largeposter" alt="..."
+              [routerLink]="['/details',th.id]">
+          </ng-container>
+    
+        </div>
+    
       </div>
-  
+    
     </div>
   
   </div>
+  
